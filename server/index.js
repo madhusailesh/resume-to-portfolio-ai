@@ -32,10 +32,10 @@ app.post('/api/upload', upload.single('resume'), async (req, res) => {
 
         // Database mein parsedData ka poora ka poora "khandaan" save kar rahe hain
         const user = await User.findOneAndUpdate(
-            { email: parsedData.email }, 
-            { ...parsedData, username }, // ... operator saari fields copy kar deta hai
-            { upsert: true, new: true }
-        );
+    { email: parsedData.email }, 
+    { ...parsedData, username },
+    { upsert: true, returnDocument: 'after' } // 'new: true' ki jagah 'returnDocument: after'
+);
 
         res.json({ 
             message: "SAB DATA SAVE HO GAYA! 🔥", 
@@ -46,6 +46,18 @@ app.post('/api/upload', upload.single('resume'), async (req, res) => {
     } catch (error) {
         console.error("Save Error:", error);
         res.status(500).json({ error: "Kuch toh gadbad hai!" });
+    }
+});
+
+
+
+app.get('/api/user/:username', async (req, res) => {
+    try {
+        const user = await User.findOne({ username: req.params.username });
+        if (!user) return res.status(404).json({ error: "User not found" });
+        res.json(user);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
 });
 
