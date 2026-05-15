@@ -12,7 +12,7 @@ import {
     Shield,
     Cpu,
 } from 'lucide-react';
-
+import API from '../api';
 const Home = () => {
     const [file, setFile] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -50,11 +50,7 @@ const Home = () => {
         setLoading(true);
 
         try {
-            const res = await axios.post(
-                'http://localhost:5000/api/upload',
-                formData
-            );
-
+            const res = await API.post('/api/upload', formData);
             navigate(`/${res.data.username}`);
         } catch (err) {
             alert('AI is busy, try again!');

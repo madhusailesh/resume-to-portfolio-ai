@@ -11,7 +11,7 @@ import {
   Cpu,
   Star,
 } from "lucide-react";
-
+import API from '../api';
 import { motion } from "framer-motion";
 
 const Portfolio = () => {
@@ -22,9 +22,7 @@ const Portfolio = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/api/user/${username}`
-        );
+        const res = await API.get(`/api/user/${username}`);
 
         setUserData(res.data);
       } catch (err) {
