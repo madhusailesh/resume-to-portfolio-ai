@@ -205,28 +205,7 @@ VITE_API_URL=https://your-render-backend-url.onrender.com
 
 ---
 
-# 📸 Screenshots
 
-Add your application screenshots here.
-
-Example:
-
-```md
-![Home Page](./screenshots/home.png)
-```
-
----
-
-# 🔮 Future Improvements
-
-- Multiple portfolio templates
-- AI theme customization
-- Resume score analysis
-- Portfolio export as ZIP
-- Authentication system
-- Drag & drop editor
-
----
 
 # 👨‍💻 Author
 
