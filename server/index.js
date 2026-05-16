@@ -38,7 +38,7 @@ app.post('/api/upload', upload.single('resume'), async (req, res) => {
 );
 
         res.json({ 
-            message: "SAB DATA SAVE HO GAYA! 🔥", 
+            message: "SAB DATA SAVE HO GAYA!  ", 
             username: user.username, 
             data: user 
         });

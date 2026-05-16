@@ -107,7 +107,7 @@ const Home = () => {
                     </div>
 
                     <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
-                        Resume2Portfolio
+                        BuildFolio-AI
                     </h1>
                 </div>
 
