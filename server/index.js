@@ -9,7 +9,12 @@ require('dotenv').config();
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://buildfolio-ai.vercel.app/",
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // 1. MongoDB Connection
