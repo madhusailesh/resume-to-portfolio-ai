@@ -7,10 +7,10 @@ import {
   Trophy,
   Sparkles,
   ExternalLink,
-  Cpu,
-  Star,
   Database,
   Wrench,
+  Star,
+  Link,
 } from "lucide-react";
 
 import { motion } from "framer-motion";
@@ -65,22 +65,23 @@ const Portfolio = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white overflow-hidden relative">
+    <div className="min-h-screen bg-[#020617] text-white overflow-x-hidden relative">
 
       {/* Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px]" />
 
       {/* Glow */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-indigo-500/20 blur-[120px] rounded-full" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-pink-500/20 blur-[120px] rounded-full" />
+      <div className="absolute top-0 left-0 w-[260px] h-[260px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] bg-indigo-500/20 blur-[120px] rounded-full" />
+
+      <div className="absolute bottom-0 right-0 w-[260px] h-[260px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px] bg-pink-500/20 blur-[120px] rounded-full" />
 
       {/* HERO */}
-      <section className="relative z-10 px-6 pt-24 pb-16 text-center">
+      <section className="relative z-10 px-4 sm:px-6 pt-16 sm:pt-24 pb-12 sm:pb-16 text-center">
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 text-indigo-400 text-sm mb-8"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 text-indigo-400 text-xs sm:text-sm mb-6 sm:mb-8"
         >
           <Sparkles size={15} />
           AI Generated Portfolio
@@ -90,47 +91,51 @@ const Portfolio = () => {
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          className="w-32 h-32 rounded-full mx-auto bg-gradient-to-r from-indigo-500 to-pink-500 p-1 shadow-[0_0_50px_rgba(99,102,241,0.6)]"
+          className="w-24 h-24 sm:w-32 sm:h-32 rounded-full mx-auto bg-gradient-to-r from-indigo-500 to-pink-500 p-1 shadow-[0_0_50px_rgba(99,102,241,0.6)]"
         >
-          <div className="w-full h-full rounded-full bg-[#020617] flex items-center justify-center text-5xl font-black">
+          <div className="w-full h-full rounded-full bg-[#020617] flex items-center justify-center text-4xl sm:text-5xl font-black">
             {name.charAt(0)}
           </div>
         </motion.div>
 
         {/* Name */}
-        <h1 className="mt-8 text-5xl md:text-7xl font-black">
+        <h1 className="mt-6 sm:mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black break-words">
           {name}
         </h1>
 
         {/* Summary */}
-        <p className="max-w-2xl mx-auto mt-6 text-slate-400 leading-relaxed">
+        <p className="max-w-2xl mx-auto mt-5 sm:mt-6 text-sm sm:text-base md:text-lg text-slate-400 leading-relaxed px-2">
           {userData.summary ||
             "Creative full stack developer building modern web experiences with scalable technologies and beautiful UI."}
         </p>
 
         {/* Email */}
-        <div className="mt-8 flex justify-center">
-          <div className="flex items-center gap-3 px-6 py-4 rounded-2xl bg-slate-900/60 border border-white/10 backdrop-blur-xl">
-            <Mail size={18} className="text-indigo-400" />
-            <span>{email}</span>
+        <div className="mt-6 sm:mt-8 flex justify-center px-2">
+          <div className="flex items-center gap-3 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-slate-900/60 border border-white/10 backdrop-blur-xl max-w-full overflow-hidden">
+            <Mail size={18} className="text-indigo-400 shrink-0" />
+
+            <span className="truncate text-sm sm:text-base">
+              {email}
+            </span>
           </div>
         </div>
       </section>
 
       {/* CONTENT */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pb-24">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24">
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
 
           {/* LEFT */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
 
             {/* Skills */}
-            <div className="rounded-3xl p-7 bg-slate-900/50 border border-white/10 backdrop-blur-xl">
+            <div className="rounded-3xl p-5 sm:p-7 bg-slate-900/50 border border-white/10 backdrop-blur-xl">
 
               <div className="flex items-center gap-3 mb-6">
                 <Code className="text-indigo-400" />
-                <h2 className="text-2xl font-black">
+
+                <h2 className="text-xl sm:text-2xl font-black">
                   Skills
                 </h2>
               </div>
@@ -142,7 +147,7 @@ const Portfolio = () => {
                       scale: 1.08,
                     }}
                     key={i}
-                    className="px-4 py-2 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-sm font-semibold"
+                    className="px-4 py-2 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs sm:text-sm font-semibold"
                   >
                     {skill}
                   </motion.div>
@@ -151,11 +156,12 @@ const Portfolio = () => {
             </div>
 
             {/* Education */}
-            <div className="rounded-3xl p-7 bg-slate-900/50 border border-white/10 backdrop-blur-xl">
+            <div className="rounded-3xl p-5 sm:p-7 bg-slate-900/50 border border-white/10 backdrop-blur-xl">
 
               <div className="flex items-center gap-3 mb-6">
                 <Database className="text-pink-400" />
-                <h2 className="text-2xl font-black">
+
+                <h2 className="text-xl sm:text-2xl font-black">
                   Education
                 </h2>
               </div>
@@ -163,19 +169,19 @@ const Portfolio = () => {
               {userData.education?.map((edu, i) => (
                 <div key={i} className="mb-6">
 
-                  <h3 className="text-lg font-bold">
+                  <h3 className="text-base sm:text-lg font-bold">
                     {edu.degree}
                   </h3>
 
-                  <p className="text-indigo-400 mt-1">
+                  <p className="text-indigo-400 mt-1 text-sm sm:text-base">
                     {edu.university}
                   </p>
 
-                  <p className="text-slate-400 text-sm mt-2">
+                  <p className="text-slate-400 text-xs sm:text-sm mt-2">
                     {edu.startDate} - {edu.endDate}
                   </p>
 
-                  <p className="text-slate-300 text-sm mt-2">
+                  <p className="text-slate-300 text-xs sm:text-sm mt-2">
                     CGPA: {edu.cgpa}
                   </p>
                 </div>
@@ -184,14 +190,15 @@ const Portfolio = () => {
           </div>
 
           {/* RIGHT */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-6 sm:space-y-8">
 
             {/* Experience */}
-            <div className="rounded-3xl p-8 bg-slate-900/50 border border-white/10 backdrop-blur-xl">
+            <div className="rounded-3xl p-5 sm:p-8 bg-slate-900/50 border border-white/10 backdrop-blur-xl">
 
               <div className="flex items-center gap-3 mb-8">
                 <Briefcase className="text-indigo-400" />
-                <h2 className="text-3xl font-black">
+
+                <h2 className="text-2xl sm:text-3xl font-black">
                   Experience
                 </h2>
               </div>
@@ -202,20 +209,20 @@ const Portfolio = () => {
                   <motion.div
                     whileHover={{ x: 8 }}
                     key={i}
-                    className="relative pl-8 border-l border-indigo-500/20"
+                    className="relative pl-6 sm:pl-8 border-l border-indigo-500/20"
                   >
 
                     <div className="absolute left-[-8px] top-1 w-4 h-4 rounded-full bg-gradient-to-r from-indigo-500 to-pink-500" />
 
-                    <h3 className="text-2xl font-bold">
+                    <h3 className="text-xl sm:text-2xl font-bold">
                       {exp.jobTitle}
                     </h3>
 
-                    <p className="text-indigo-400 mt-1 font-semibold">
+                    <p className="text-indigo-400 mt-1 font-semibold text-sm sm:text-base">
                       {exp.company}
                     </p>
 
-                    <p className="text-slate-500 text-sm mt-1">
+                    <p className="text-slate-500 text-xs sm:text-sm mt-1">
                       {exp.startDate} - {exp.endDate}
                     </p>
 
@@ -223,7 +230,7 @@ const Portfolio = () => {
                       {exp.description?.map((desc, idx) => (
                         <li
                           key={idx}
-                          className="text-slate-300 leading-relaxed"
+                          className="text-slate-300 leading-relaxed text-sm sm:text-base"
                         >
                           • {desc}
                         </li>
@@ -235,16 +242,17 @@ const Portfolio = () => {
             </div>
 
             {/* Projects */}
-            <div className="rounded-3xl p-8 bg-slate-900/50 border border-white/10 backdrop-blur-xl">
+            <div className="rounded-3xl p-5 sm:p-8 bg-slate-900/50 border border-white/10 backdrop-blur-xl">
 
               <div className="flex items-center gap-3 mb-8">
                 <Trophy className="text-pink-400" />
-                <h2 className="text-3xl font-black">
+
+                <h2 className="text-2xl sm:text-3xl font-black">
                   Projects
                 </h2>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                 {userData.projects?.map((proj, i) => (
                   <motion.div
@@ -252,7 +260,7 @@ const Portfolio = () => {
                       y: -8,
                     }}
                     key={i}
-                    className="rounded-3xl p-6 bg-gradient-to-br from-slate-800/60 to-slate-900/30 border border-white/10"
+                    className="rounded-3xl p-5 sm:p-6 bg-gradient-to-br from-slate-800/60 to-slate-900/30 border border-white/10"
                   >
 
                     <div className="flex justify-between items-start">
@@ -271,7 +279,7 @@ const Portfolio = () => {
                       )}
                     </div>
 
-                    <h3 className="mt-5 text-2xl font-black">
+                    <h3 className="mt-5 text-xl sm:text-2xl font-black break-words">
                       {proj.title || proj.name}
                     </h3>
 
@@ -285,27 +293,28 @@ const Portfolio = () => {
             </div>
 
             {/* Certifications */}
-            <div className="rounded-3xl p-8 bg-slate-900/50 border border-white/10 backdrop-blur-xl">
+            <div className="rounded-3xl p-5 sm:p-8 bg-slate-900/50 border border-white/10 backdrop-blur-xl">
 
               <div className="flex items-center gap-3 mb-8">
                 <Wrench className="text-green-400" />
-                <h2 className="text-3xl font-black">
+
+                <h2 className="text-2xl sm:text-3xl font-black">
                   Certifications
                 </h2>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
                 {userData.certifications?.map((cert, i) => (
                   <div
                     key={i}
                     className="rounded-2xl p-5 bg-slate-800/40 border border-white/10"
                   >
-                    <h3 className="font-bold text-lg">
+                    <h3 className="font-bold text-base sm:text-lg">
                       {cert.name}
                     </h3>
 
-                    <p className="text-indigo-400 mt-2">
+                    <p className="text-indigo-400 mt-2 text-sm sm:text-base">
                       {cert.issuer}
                     </p>
                   </div>
@@ -316,6 +325,42 @@ const Portfolio = () => {
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="relative z-10 border-t border-white/10 py-8 sm:py-10 px-4">
+
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+
+          <div>
+            <p className="text-slate-400 text-sm sm:text-base">
+              Made by{" "}
+              <span className="font-bold bg-gradient-to-r from-indigo-400 to-pink-400 bg-clip-text text-transparent">
+                Madhu Sailesh Sasamal
+              </span>
+            </p>
+
+            <p className="text-slate-500 text-xs mt-1">
+              © 2026 All Rights Reserved
+            </p>
+          </div>
+
+          <a
+            href="https://www.linkedin.com/in/madhu-sailesh-sasamal-6918912a4/"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 px-5 py-3 rounded-2xl bg-slate-900/60 border border-white/10 hover:border-indigo-500/30 hover:bg-slate-800/60 transition-all duration-300"
+          >
+            <Link
+  size={18}
+  className="text-indigo-400"
+/>
+
+            <span className="text-sm font-semibold">
+              Connect on LinkedIn
+            </span>
+          </a>
+        </div>
+      </footer>
     </div>
   );
 };
