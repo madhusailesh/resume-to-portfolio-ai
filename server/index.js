@@ -11,7 +11,10 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: "https://buildfolio-ai.vercel.app/",
+    origin: [
+        "https://buildfolio-ai.vercel.app/",
+    "http://localhost:5173"
+    ],
     credentials: true,
   })
 );
